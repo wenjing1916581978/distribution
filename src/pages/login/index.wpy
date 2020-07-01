@@ -1,0 +1,76 @@
+<style lang="less">
+</style>
+<template>
+  <view class="container">
+    <input class="weui-input" value="{{account}}" data-name="account" bindinput="inputchange" maxlength="10" type="text" placeholder="请输入用户名" />
+    <input class="weui-input" value="{{pass}}" data-name="pass" bindinput="inputchange" password maxlength="10" type="text" placeholder="请输入密码" />
+    <button type="primary" @tap="login">登录</button>
+    <van-toast id="van-toast" />
+    <van-overlay show="{{ isLoading }}">
+      <image src="../../assets/images/loading.svg" class="loading"></image>
+    </van-overlay>
+  </view>
+</template>
+
+<script>
+  import wepy from 'wepy'
+
+  import testMixin from '@/mixins/test'
+  import Toast from '@/vant/toast/toast';
+
+  export default class Index extends wepy.page {
+    config = {
+      navigationBarTitleText: '登录',
+      "usingComponents": {
+        "van-toast": "../../../vant/toast/index",
+        "van-overlay": "../../../vant/overlay/index",
+      }
+    }
+    components = {
+
+    }
+
+    mixins = [testMixin]
+
+    data = {
+      account:'',
+      pass:'',
+      isLoading:false
+    }
+
+    computed = {
+    }
+
+    methods = {
+      inputchange(e){
+        const that =this
+				const name=e.currentTarget.dataset.name
+				that[name] = e.detail.value
+				this.$apply()
+			},
+      login(){
+        const that =this
+        const {account,pass} = that
+        if(account.trim()==''){
+          Toast.fail('用户名不为空');
+          return false
+        }
+        if(pass.trim()==''){
+          Toast.fail('密码不为空');
+          return false
+        }
+        that.isLoading = true
+        that.$apply()
+        // 请求接口
+      }
+    }
+
+    events = {
+
+    }
+
+    onLoad() {
+
+    }
+  }
+</script>

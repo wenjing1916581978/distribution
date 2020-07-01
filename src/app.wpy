@@ -1,0 +1,124 @@
+<style lang="less">
+@unit:2rpx;
+.flex{
+  display: -webkit-box;
+  display: box;
+  display: -webkit-flex;
+  display: flex;
+  overflow:hidden;
+}
+.flex1{
+  display: block;
+  -webkit-box-flex: 1;
+  -webkit-flex: 1;
+  flex: 1;
+  overflow: hidden;
+}
+.alignitems{
+  align-items:center;
+}
+.justifycontent{
+  justify-content:center;
+}
+.dot{
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  overflow: hidden;
+}
+page{
+    background: #f8f8f9;
+}
+.bgfff{
+  background: #ffffff;
+}
+.mb20{
+  margin-bottom: 20rpx;
+}
+.loading{
+  width: 120*@unit;
+  height: 120*@unit;
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  margin: auto;
+  left: 0;
+  right: 0;
+}
+@font-face {
+  font-family: 'iconfont';  /* project id 1916670 */
+  src: url('//at.alicdn.com/t/font_1916670_bqrck8kf6nc.eot');
+  src: url('//at.alicdn.com/t/font_1916670_bqrck8kf6nc.eot?#iefix') format('embedded-opentype'),
+  url('//at.alicdn.com/t/font_1916670_bqrck8kf6nc.woff2') format('woff2'),
+  url('//at.alicdn.com/t/font_1916670_bqrck8kf6nc.woff') format('woff'),
+  url('//at.alicdn.com/t/font_1916670_bqrck8kf6nc.ttf') format('truetype'),
+  url('//at.alicdn.com/t/font_1916670_bqrck8kf6nc.svg#iconfont') format('svg');
+}
+.iconfont{
+  font-family: 'iconfont';
+}
+.text-center{
+  text-align: center;
+}
+</style>
+
+<script>
+import wepy from 'wepy'
+import 'wepy-async-function'
+
+
+export default class extends wepy.app {
+  config = {
+    pages: [
+
+      'pages/home/index',
+      'pages/login/index',
+      'pages/home/details',
+    ],
+    window: {
+      backgroundTextStyle: 'light',
+      navigationBarBackgroundColor: '#fff',
+      navigationBarTitleText: 'WeChat',
+      navigationBarTextStyle: 'black'
+    }
+  }
+
+  globalData = {
+    userInfo: null
+  }
+
+  constructor () {
+    super()
+    this.use('requestfix')
+  }
+
+  onLaunch() {
+    this.testAsync()
+  }
+
+  sleep (s) {
+    return new Promise((resolve, reject) => {
+      setTimeout(() => {
+        resolve('promise resolved')
+      }, s * 1000)
+    })
+  }
+
+  async testAsync () {
+    const data = await this.sleep(3)
+    console.log(data)
+  }
+
+  getUserInfo(cb) {
+    const that = this
+    if (this.globalData.userInfo) {
+      return this.globalData.userInfo
+    }
+    wepy.getUserInfo({
+      success (res) {
+        that.globalData.userInfo = res.userInfo
+        cb && cb(res.userInfo)
+      }
+    })
+  }
+}
+</script>

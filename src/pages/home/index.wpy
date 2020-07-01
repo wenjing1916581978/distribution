@@ -1,0 +1,59 @@
+<style lang="less">
+</style>
+<template>
+  <view class="container">
+
+    <van-toast id="van-toast" />
+    <van-overlay show="{{ isLoading }}">
+      <image src="../../assets/images/loading.svg" class="loading"></image>
+    </van-overlay>
+  </view>
+</template>
+
+<script>
+  import wepy from 'wepy'
+
+  import testMixin from '@/mixins/test'
+  import Toast from '@/vant/toast/toast';
+
+  export default class Index extends wepy.page {
+    config = {
+      navigationBarTitleText: '配电站首页',
+      "usingComponents": {
+        "van-toast": "../../../vant/toast/index",
+        "van-overlay": "../../../vant/overlay/index",
+      }
+    }
+    components = {
+
+    }
+
+    mixins = [testMixin]
+
+    data = {
+      account:'',
+      pass:'',
+      isLoading:true
+    }
+
+    computed = {
+    }
+
+    methods = {
+
+    }
+
+    events = {
+
+    }
+
+    onLoad() {
+      const that = this
+      // Toast.success('成功文案');
+      setTimeout(()=>{
+        that.isLoading = false
+        that.$apply()
+      },1000)
+    }
+  }
+</script>

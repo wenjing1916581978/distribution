@@ -1,0 +1,284 @@
+<style lang="less">
+.grade{
+  position: relative;
+  z-index: 1;
+  height: 200px;
+  &-bg{
+    width:100%;
+    height: 200px;
+    background-color: #eeeeee;
+    position: absolute;
+    left: 0;
+    top: 0;
+    display: block;
+    z-index: -1;
+  }
+}
+.overall{
+  &-icon{
+    width: 80rpx;
+    height: 80rpx;
+    border-radius: 50%;
+    background: #f8f8f8;
+    margin: 0 auto;
+  }
+}
+.tit{
+  line-height: 100rpx;
+  border-bottom: 2rpx solid #dddddd;
+}
+.boxs{
+  background: #ffffff;
+  margin-bottom: 20rpx;
+}
+.content{
+  padding: 20rpx 0;
+  text-align: center;
+}
+</style>
+<template>
+  <view class="container">
+    <!-- 打分 S -->
+    <view class="grade flex alignitems justifycontent boxs">
+      <image class="grade-bg" mode="scaleToFill" src="https://res.wx.qq.com/wxdoc/dist/assets/img/0.4cb08bb4.jpg"></image>
+      <view class="grade-txt flex">
+        <view class="grade-num">80</view>
+        <view class="grade-label">分</view>
+      </view>
+    </view>
+    <!-- 打分 E -->
+
+    <!-- 信息 S -->
+    <view class="info boxs">
+      <view></view>
+      <view class="content">
+        <van-row>
+          <van-col span="8">
+            <view>
+              <view>783天</view>
+              <view>正常运行</view>
+            </view>
+          </van-col>
+          <van-col span="8">
+            <view>
+              <view>2.1年</view>
+              <view>配电室年限</view>
+            </view>
+          </van-col>
+          <van-col span="8">
+            <view>
+              <view>20年</view>
+              <view>正常使用年限</view>
+            </view>
+          </van-col>
+        </van-row>
+      </view>
+
+    </view>
+    <!-- 信息 E -->
+
+    <!-- 总体运行情况 S -->
+    <view class="overall boxs">
+      <view class="tit">总体运行情况</view>
+      <view class="content">
+        <view class="flex">
+          <view class="flex1">
+            <view class="iconfont overall-icon alignitems justifycontent flex">&#xe63c;</view>
+            <view class="overall-txt">网络通畅</view>
+          </view>
+          <view class="flex1">
+            <view class="iconfont overall-icon alignitems justifycontent flex">&#xe63c;</view>
+            <view class="overall-txt">网络通畅</view>
+          </view>
+          <view class="flex1">
+            <view class="iconfont overall-icon alignitems justifycontent flex">&#xe63c;</view>
+            <view class="overall-txt">网络通畅</view>
+          </view>
+          <view class="flex1">
+            <view class="iconfont overall-icon alignitems justifycontent flex">&#xe63c;</view>
+            <view class="overall-txt">网络通畅</view>
+          </view>
+          <view class="flex1">
+            <view class="iconfont overall-icon alignitems justifycontent flex">&#xe63c;</view>
+            <view class="overall-txt">网络通畅</view>
+          </view>
+        </view>
+        <view class="flex text-center">
+          <view class="flex1">
+            <view class="iconfont overall-icon alignitems justifycontent flex">&#xe63c;</view>
+            <view class="overall-txt">网络通畅</view>
+          </view>
+          <view class="flex1">
+            <view class="iconfont overall-icon alignitems justifycontent flex">&#xe63c;</view>
+            <view class="overall-txt">网络通畅</view>
+          </view>
+          <view class="flex1">
+            <view class="iconfont overall-icon alignitems justifycontent flex">&#xe63c;</view>
+            <view class="overall-txt">网络通畅</view>
+          </view>
+          <view class="flex1">
+            <view class="iconfont overall-icon alignitems justifycontent flex">&#xe63c;</view>
+            <view class="overall-txt">网络通畅</view>
+          </view>
+          <view class="flex1"></view>
+        </view>
+      </view>
+
+    </view>
+    <!-- 总体运行情况 E -->
+
+    <!-- 配电室容量 S -->
+    <view class="capacity boxs">
+      <view class="tit">配电室容量</view>
+      <view class="content">
+        <van-row>
+          <van-col span="8">
+            <view>
+              <view class="iconfont">&#xe63c;</view>
+              <view>正常运行</view>
+            </view>
+          </van-col>
+          <van-col span="8">
+            <view>
+              <view class="iconfont">&#xe63c;</view>
+              <view>配电室年限</view>
+            </view>
+          </van-col>
+          <van-col span="8">
+            <view>
+              <view class="iconfont">&#xe63c;</view>
+              <view>正常使用年限</view>
+            </view>
+          </van-col>
+          <van-col span="8">
+            <view>
+              <view class="iconfont">&#xe63c;</view>
+              <view>正常运行</view>
+            </view>
+          </van-col>
+          <van-col span="8">
+            <view>
+              <view class="iconfont">&#xe63c;</view>
+              <view>配电室年限</view>
+            </view>
+          </van-col>
+          <van-col span="8">
+            <view>
+              <view class="iconfont">&#xe63c;</view>
+              <view>正常使用年限</view>
+            </view>
+          </van-col>
+          <van-col span="8">
+            <view>
+              <view class="iconfont">&#xe63c;</view>
+              <view>正常运行</view>
+            </view>
+          </van-col>
+          <van-col span="8">
+            <view>
+              <view class="iconfont">&#xe63c;</view>
+              <view>配电室年限</view>
+            </view>
+          </van-col>
+        </van-row>
+      </view>
+    </view>
+    <!-- 配电室容量 E -->
+
+    <!-- 报警信息 S -->
+    <view class="alarminfo boxs">
+      <view class="tit">报警信息</view>
+      <view class="content">
+        <van-row>
+          <van-col span="8">
+            <view>
+              <view>783天</view>
+              <view>故障报警</view>
+            </view>
+          </van-col>
+          <van-col span="8">
+            <view>
+              <view>2.1年</view>
+              <view>诊断报警</view>
+            </view>
+          </van-col>
+          <van-col span="8">
+            <view>
+              <view>20年</view>
+              <view>系统报警</view>
+            </view>
+          </van-col>
+        </van-row>
+      </view>
+
+    </view>
+    <!-- 报警信息 E -->
+    <!-- <repeat for="{{listData}}" key="index" index="index" item="item">
+
+    </repeat> -->
+    <van-overlay show="{{ isLoading }}">
+      <image src="../../assets/images/loading.svg" class="loading"></image>
+    </van-overlay>
+    <van-toast id="van-toast" />
+  </view>
+</template>
+
+<script>
+  import wepy from 'wepy'
+
+  import testMixin from '@/mixins/test'
+  import Toast from '@/vant/toast/toast';
+  // console.log('moduleA ignored: ', moduleA) // => moduleA ignored: {}
+
+
+  export default class Index extends wepy.page {
+    config = {
+      navigationBarTitleText: '配电站',
+      "usingComponents": {
+        "van-toast": "../../../vant/toast/index",
+        "van-overlay": "../../../vant/overlay/index",
+        // "scroll": "../../../components/scroll/index",
+        // "van-loading": "../../../vant/loading/index",
+        "van-row": "../../../vant/row/index",
+         "van-col": "../../../vant/col/index",
+        // "van-button": "../../../vant/button/index"
+      }
+    }
+    components = {
+      // panel: Panel,
+      // counter1: Counter,
+      // counter2: Counter,
+      // list: List,
+      // group: Group,
+      // toast: Toast
+    }
+
+    mixins = [testMixin]
+
+    data = {
+      isLoading:true,
+    }
+
+    computed = {
+      // now () {
+      //   return +new Date()
+      // }
+    }
+
+    methods = {
+    }
+
+    events = {
+
+    }
+
+    onLoad() {
+      const that = this
+      // Toast.success('成功文案');
+      setTimeout(()=>{
+        that.isLoading = false
+        that.$apply()
+      },1000)
+    }
+  }
+</script>
