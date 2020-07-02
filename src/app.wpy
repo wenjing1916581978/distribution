@@ -20,7 +20,7 @@
 .justifycontent{
   justify-content:center;
 }
-.dot{
+.ov{
   text-overflow: ellipsis;
   white-space: nowrap;
   overflow: hidden;
@@ -69,10 +69,10 @@ import 'wepy-async-function'
 export default class extends wepy.app {
   config = {
     pages: [
-
+      'pages/home/details',
       'pages/home/index',
       'pages/login/index',
-      'pages/home/details',
+
     ],
     window: {
       backgroundTextStyle: 'light',

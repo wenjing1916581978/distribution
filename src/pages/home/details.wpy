@@ -1,8 +1,18 @@
 <style lang="less">
+@colors:#f5c74c,#f09d43,#ef8b43,#eb5237,#6ee5a3,#5ecd8a,#f09898,#f05f5f,#ef8b43;
+.loop(@i) when (@i < length(@colors)+1){
+    .color-@{i} {
+      color: extract(@colors, @i)
+    }
+    .loop(@i+1);
+}
+.loop(1);
+
 .grade{
   position: relative;
   z-index: 1;
   height: 200px;
+  color: #ffffff;
   &-bg{
     width:100%;
     height: 200px;
@@ -13,6 +23,30 @@
     display: block;
     z-index: -1;
   }
+  &-num{
+    font-size: 100rpx;
+    line-height: 1;
+  }
+}
+.info{
+  margin-left: 30rpx;
+  margin-right: 30rpx;
+  margin-top: -30rpx;
+  box-shadow: 0 4rpx 10rpx 0 rgba(0,0,0,.1);
+  position: relative;
+  z-index: 1;
+  &-tit{
+    padding: 18rpx 20rpx;
+    border-bottom: 1rpx solid #dddddd;
+    font-size: 26rpx;
+  }
+  &-num{
+    font-size: 28rpx;
+  }
+  &-txt{
+    color: #999999;
+    font-size: 24rpx;
+  }
 }
 .overall{
   &-icon{
@@ -21,11 +55,40 @@
     border-radius: 50%;
     background: #f8f8f8;
     margin: 0 auto;
+    line-height: 1.2;
+  }
+  &-txt{
+    font-size: 24rpx;
+    color: #999999;
+  }
+}
+.capacity{
+  &-txt{
+    font-size: 24rpx;
+    color: #666666;
+  }
+  &-icon{
+    font-size: 60rpx;
+    color: blue;
+  }
+  &-item{
+    padding: 20rpx 0;
+  }
+}
+.alarminfo{
+  &-num{
+    color: blue;
+    font-size: 30rpx;
+    margin-bottom: 10rpx;
+  }
+  &-txt{
+    font-size: 26rpx;
   }
 }
 .tit{
   line-height: 100rpx;
   border-bottom: 2rpx solid #dddddd;
+  padding: 0 30rpx;
 }
 .boxs{
   background: #ffffff;
@@ -35,11 +98,17 @@
   padding: 20rpx 0;
   text-align: center;
 }
+.bl{
+  border-left: 1px solid #dddddd;
+}
+.br{
+  border-right: 1px solid #dddddd;
+}
 </style>
 <template>
   <view class="container">
     <!-- 打分 S -->
-    <view class="grade flex alignitems justifycontent boxs">
+    <view class="grade flex alignitems justifycontent">
       <image class="grade-bg" mode="scaleToFill" src="https://res.wx.qq.com/wxdoc/dist/assets/img/0.4cb08bb4.jpg"></image>
       <view class="grade-txt flex">
         <view class="grade-num">80</view>
@@ -50,25 +119,27 @@
 
     <!-- 信息 S -->
     <view class="info boxs">
-      <view></view>
+      <view class="info-tit">
+        <view class="ov">运维企业:陕西天汇电力建设工程有限公司陕西天汇电力建设工程有限公司陕西天汇电力建设工程有限公司</view>
+      </view>
       <view class="content">
         <van-row>
           <van-col span="8">
-            <view>
-              <view>783天</view>
-              <view>正常运行</view>
+            <view class="br">
+              <view class="info-num">783天</view>
+              <view class="info-txt">正常运行</view>
             </view>
           </van-col>
           <van-col span="8">
             <view>
-              <view>2.1年</view>
-              <view>配电室年限</view>
+              <view class="info-num">2.1年</view>
+              <view class="info-txt">配电室年限</view>
             </view>
           </van-col>
           <van-col span="8">
-            <view>
-              <view>20年</view>
-              <view>正常使用年限</view>
+            <view class="bl">
+              <view class="info-num">20年</view>
+              <view class="info-txt">正常使用年限</view>
             </view>
           </van-col>
         </van-row>
@@ -83,42 +154,43 @@
       <view class="content">
         <view class="flex">
           <view class="flex1">
-            <view class="iconfont overall-icon alignitems justifycontent flex">&#xe63c;</view>
+            <view class="iconfont overall-icon alignitems justifycontent flex color-1">&#xe63c;</view>
             <view class="overall-txt">网络通畅</view>
           </view>
           <view class="flex1">
-            <view class="iconfont overall-icon alignitems justifycontent flex">&#xe63c;</view>
-            <view class="overall-txt">网络通畅</view>
+            <view class="iconfont overall-icon alignitems justifycontent flex color-2">&#xe63c;</view>
+            <view class="overall-txt">温度0℃</view>
           </view>
           <view class="flex1">
-            <view class="iconfont overall-icon alignitems justifycontent flex">&#xe63c;</view>
-            <view class="overall-txt">网络通畅</view>
+            <view class="iconfont overall-icon alignitems justifycontent flex color-3">&#xe63c;</view>
+            <view class="overall-txt">湿度0%</view>
           </view>
           <view class="flex1">
-            <view class="iconfont overall-icon alignitems justifycontent flex">&#xe63c;</view>
-            <view class="overall-txt">网络通畅</view>
+            <view class="iconfont overall-icon alignitems justifycontent flex color-4">&#xe63c;</view>
+            <view class="overall-txt">烟感0%</view>
           </view>
           <view class="flex1">
-            <view class="iconfont overall-icon alignitems justifycontent flex">&#xe63c;</view>
-            <view class="overall-txt">网络通畅</view>
+            <view class="iconfont overall-icon alignitems justifycontent flex color-5">&#xe63c;</view>
+            <view class="overall-txt">液位0%</view>
           </view>
+
         </view>
         <view class="flex text-center">
           <view class="flex1">
-            <view class="iconfont overall-icon alignitems justifycontent flex">&#xe63c;</view>
-            <view class="overall-txt">网络通畅</view>
+            <view class="iconfont overall-icon alignitems justifycontent flex color-6">&#xe63c;</view>
+            <view class="overall-txt">负载率0.93%</view>
           </view>
           <view class="flex1">
-            <view class="iconfont overall-icon alignitems justifycontent flex">&#xe63c;</view>
-            <view class="overall-txt">网络通畅</view>
+            <view class="iconfont overall-icon alignitems justifycontent flex color-7">&#xe63c;</view>
+            <view class="overall-txt">电流不平衡度1%</view>
           </view>
           <view class="flex1">
-            <view class="iconfont overall-icon alignitems justifycontent flex">&#xe63c;</view>
-            <view class="overall-txt">网络通畅</view>
+            <view class="iconfont overall-icon alignitems justifycontent flex color-8">&#xe63c;</view>
+            <view class="overall-txt">变压容量(KVA)630</view>
           </view>
           <view class="flex1">
-            <view class="iconfont overall-icon alignitems justifycontent flex">&#xe63c;</view>
-            <view class="overall-txt">网络通畅</view>
+            <view class="iconfont overall-icon alignitems justifycontent flex color-9">&#xe63c;</view>
+            <view class="overall-txt">功率因数(cos)-0.98</view>
           </view>
           <view class="flex1"></view>
         </view>
@@ -133,51 +205,51 @@
       <view class="content">
         <van-row>
           <van-col span="8">
-            <view>
-              <view class="iconfont">&#xe63c;</view>
-              <view>正常运行</view>
+            <view class="capacity-item">
+              <view class="iconfont capacity-icon">&#xe63c;</view>
+              <view class="capacity-txt">配电室43个</view>
             </view>
           </van-col>
           <van-col span="8">
-            <view>
-              <view class="iconfont">&#xe63c;</view>
-              <view>配电室年限</view>
+            <view class="capacity-item">
+              <view class="iconfont capacity-icon">&#xe63c;</view>
+              <view class="capacity-txt">回路306个</view>
             </view>
           </van-col>
           <van-col span="8">
-            <view>
-              <view class="iconfont">&#xe63c;</view>
-              <view>正常使用年限</view>
+            <view class="capacity-item">
+              <view class="iconfont capacity-icon">&#xe63c;</view>
+              <view class="capacity-txt">变压器2个</view>
             </view>
           </van-col>
           <van-col span="8">
-            <view>
-              <view class="iconfont">&#xe63c;</view>
-              <view>正常运行</view>
+            <view class="capacity-item">
+              <view class="iconfont capacity-icon">&#xe63c;</view>
+              <view class="capacity-txt">入住率5%</view>
             </view>
           </van-col>
           <van-col span="8">
-            <view>
-              <view class="iconfont">&#xe63c;</view>
-              <view>配电室年限</view>
+            <view class="capacity-item">
+              <view class="iconfont capacity-icon">&#xe63c;</view>
+              <view class="capacity-txt">住宅容量30KVA</view>
             </view>
           </van-col>
           <van-col span="8">
-            <view>
-              <view class="iconfont">&#xe63c;</view>
-              <view>正常使用年限</view>
+            <view class="capacity-item">
+              <view class="iconfont capacity-icon">&#xe63c;</view>
+              <view class="capacity-txt">车位数量500个</view>
             </view>
           </van-col>
           <van-col span="8">
-            <view>
-              <view class="iconfont">&#xe63c;</view>
-              <view>正常运行</view>
+            <view class="capacity-item">
+              <view class="iconfont capacity-icon">&#xe63c;</view>
+              <view class="capacity-txt">设计容量4200KVA</view>
             </view>
           </van-col>
           <van-col span="8">
-            <view>
-              <view class="iconfont">&#xe63c;</view>
-              <view>配电室年限</view>
+            <view class="capacity-item">
+              <view class="iconfont capacity-icon">&#xe63c;</view>
+              <view class="capacity-txt">使用容量89KVA</view>
             </view>
           </van-col>
         </van-row>
@@ -191,21 +263,21 @@
       <view class="content">
         <van-row>
           <van-col span="8">
-            <view>
-              <view>783天</view>
-              <view>故障报警</view>
+            <view class="br">
+              <view class="alarminfo-num">78次</view>
+              <view class="alarminfo-txt">故障报警</view>
             </view>
           </van-col>
           <van-col span="8">
             <view>
-              <view>2.1年</view>
-              <view>诊断报警</view>
+              <view class="alarminfo-num">2.1次</view>
+              <view class="alarminfo-txt">诊断报警</view>
             </view>
           </van-col>
           <van-col span="8">
-            <view>
-              <view>20年</view>
-              <view>系统报警</view>
+            <view class="bl">
+              <view class="alarminfo-num">20次</view>
+              <view class="alarminfo-txt">系统报警</view>
             </view>
           </van-col>
         </van-row>
